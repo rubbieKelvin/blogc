@@ -49,6 +49,11 @@ export default defineType({
       title: 'Body',
       type: 'blockContent',
     }),
+    defineField({
+      name: 'external_link',
+      title: 'External publication link',
+      type: 'url',
+    }),
   ],
 
   preview: {
