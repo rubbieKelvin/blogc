@@ -1,44 +1,53 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'author',
-  title: 'Author',
+  name: 'project',
   type: 'document',
+  title: 'Project',
   fields: [
     defineField({
-      name: 'name',
-      title: 'Name',
+      name: 'title',
       type: 'string',
+      title: 'Title',
     }),
     defineField({
       name: 'slug',
-      title: 'Slug',
       type: 'slug',
+      title: 'Slug',
       options: {
-        source: 'name',
+        source: 'title',
         maxLength: 96,
       },
     }),
     defineField({
-      name: 'image',
-      title: 'Image',
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+    }),
+    defineField({
+      name: 'mainImage',
+      title: 'Main image',
       type: 'image',
       options: {
         hotspot: true,
       },
     }),
     defineField({
-      name: 'bio',
-      title: 'Bio',
+      name: 'categories',
+      title: 'Categories',
       type: 'array',
-      of: [
-        {
-          title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [],
-        },
-      ],
+      of: [{type: 'reference', to: {type: 'category'}}],
+    }),
+    defineField({
+      name: 'body',
+      title: 'Body',
+      type: 'blockContent',
+    }),
+    defineField({
+      title: 'Url',
+      description: 'Home for this project',
+      type: 'url',
+      name: 'url',
     }),
     defineField({
       name: 'links',
@@ -52,10 +61,4 @@ export default defineType({
       ],
     }),
   ],
-  preview: {
-    select: {
-      title: 'name',
-      media: 'image',
-    },
-  },
 })

@@ -1,7 +1,7 @@
 import {defineField, defineType} from 'sanity'
 
 export default defineType({
-  name: 'card',
+  name: 'gallarycard',
   title: 'Gallary card',
   type: 'document',
   fields: [
@@ -9,6 +9,15 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+    }),
+    defineField({
+      name: 'featured',
+      type: 'boolean',
+    }),
+    defineField({
+      name: 'priority',
+      type: 'number',
+      description: "0 (higher priority) - Inf (lesser prioirty)",
     }),
     defineField({
       name: 'reference',
